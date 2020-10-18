@@ -1,0 +1,146 @@
+<form id="formulario" Form name= "forminclui">
+  <div>
+    <div class="row">
+      <div class="form-check 8">
+        <ul>
+          <label class="form-check-label">
+            <input type="radio" (click)="tipo()" class="form-check-input" name="optionsRadios" id="optionsRadios1"
+              value="option1" checked>
+            Pessoa Fisica
+          </label>
+        </ul>
+      </div>
+      <div class="form-check col-md-4">
+        <ul>
+          <label class="form-check-label">
+            <input type="radio" (click)="tipoj()" c class="form-check-input" name="optionsRadios" id="optionsRadios2"
+              value="option2" checked>
+            Pessoa Juridica
+          </label>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div *ngIf="fisica==true" class="col-md-6">
+        <ul>
+          <label for="formGroupExampleInput2">Cpf</label>
+          <input type="text" class="form-control" placeholder="000.000.000-00">
+        </ul>
+      </div>
+      <div *ngIf="pj==true" class="col-md-6">
+        <ul>
+          <label for="formGroupExampleInput2">Cnpj</label>
+          <input type="text" class="form-control" placeholder="00.000.000/0000-00">
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-6">
+        <ul>
+          <label for="formGroupExampleInput">Nome</label>
+          <input type="text" class="form-control" id="formGroupExampleInput"  placeholder=""required>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <label for="formGroupExampleInput2">Sobrenome</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" name="sobrenome" placeholder=""required/>
+        <span ng-class="error" ng-show="forminclui.sobrenome.$error.required">Nome é obrigatório</span>
+      </div>
+      <div class="col-md-3">
+        <label for="formGroupExampleInput2">Data Nascimento</label>
+        <input type="date" class="form-control" id="formGroupExampleInput2" placeholder=""required>
+      </div>
+    </div>
+    <div class="form-inline">
+
+      <div class="form-group">
+        <ul>
+          <label for="inputPassword2" class="sr-only">Cep</label>
+          <input [(ngModel)]="idcep" name="idcep" type="text" class="form-control" id="inputPassword2"
+            placeholder="Digite Cep para buscar">
+        </ul>
+      </div>
+      <button type="submit" id="teste" class="btn btn-light" (click)="getPeople(idcep)">Buscar</button>
+    </div>
+    <div *ngIf="getPeople">
+      <div class="row">
+        <div class="col-md-3">
+          <ul>
+            <label for="formGroupExampleInput2">Logradouro</label>
+            <input type="text" class="form-control" id="endereco" placeholder="" value={{cep.cep}}>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <label for="formGroupExampleInput2">Bairro</label>
+          <input type="text" class="form-control" id="cidade" placeholder="" value={{cep.bairro}}>
+        </div>
+        <div class="col-md-6">
+          <label for="formGroupExampleInput2">Complemento</label>
+          <input type="text" class="form-control" id="cidade" placeholder="" value={{cep.complemento}}>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <ul>
+            <label for="formGroupExampleInput2">Ponto de Referencia</label>
+            <input type="text" class="form-control" id="endereco" placeholder="">
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <label for="formGroupExampleInput2">Numero</label>
+          <input type="text" class="form-control" id="cidade" placeholder="">
+        </div>
+        <div class="col-md-3">
+          <label for="formGroupExampleInput2">Cidade</label>
+          <input type="text" class="form-control" id="cidade" placeholder="" value={{cep.localidade}}>
+        </div>
+        <div class="col-md-3">
+          <label for="formGroupExampleInput2">Estado</label>
+          <input type="text" class="form-control" id="cidade" placeholder="" value={{cep.uf}}>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <ul>
+          <label for="formGroupExampleInput2">Telefone</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <label for="formGroupExampleInput2">Celular</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+      </div>
+      <div class="col-md-6">
+        <label for="formGroupExampleInput2">Email</label>
+        <input type="text" class="form-control" id="seuemail@emai" placeholder="">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <ul>
+          <label for="formGroupExampleInput2">Login</label>
+          <input type="text" class="form-control" id="seuemail@emai" placeholder="">
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <label for="formGroupExampleInput2">Senha</label>
+        <input type="text" class="form-control" id="seuemail@emai" placeholder="">
+      </div>
+
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-1">
+      <button type="submit" id="salvar" class="btn btn-success btn-lg ">Salvar</button>
+    </div>
+    <div class="col-md-2">
+      <button type="submit" id="cancelar" class="btn btn-warning btn-lg">Cancelar</button>
+    </div>
+  </div>
+</form>
